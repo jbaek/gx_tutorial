@@ -70,17 +70,6 @@ We switch to the sad path to see what might happen if the input data has an unex
 2. Look at the stack trace to find the line of code that failed:
     5. `File "/Users/jasonbaek/airflow/dags/tutorial_pdb.py", line 32, in transform_leave_column`
     6. `return str(int(leave) + 1)`
-
-
-
-<p id="gdcalert1" ><span style="color: red; font-weight: bold">>>>>>  gd2md-html alert: inline image link here (to images/image1.png). Store image on your image server and adjust path/filename/extension if necessary. </span><br>(<a href="#">Back to top</a>)(<a href="#gdcalert2">Next alert</a>)<br><span style="color: red; font-weight: bold">>>>>> </span></p>
-
-
-![alt_text](images/image1.png "image_tooltip")
-
-
-
-
 3. Add a breakpoint to `transform_leave_column()` function
     7. Uncomment line 31: `breakpoint()` 
     8. Save the change
