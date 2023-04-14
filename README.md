@@ -9,7 +9,6 @@ In this part of the tutorial, you will debug an error in an Airflow pipeline usi
 
 * The code needed to start the debugger
 * Learn the basic features and their commands
-    * See the value of an expression
 * See situations where the debugger is an improvement over `print()` statements
 * “Break” the pipeline, then find the bug and fix it
 
@@ -21,8 +20,7 @@ In this part of the tutorial, you will debug an error in an Airflow pipeline usi
 * Python 3.7+ and Airflow (2.5.3) are installed
     * You should have a basic understanding of both (i.e. you can read the Python code and know what a DAG is and you can get one to run)
 * Terminal app
-* &lt;link to DAG>
-    * Download to &lt;folder>
+* [PIpeline code](https://github.com/jbaek/gx_tutorial/blob/main/tutorial_pdb.py)
 * The [pdb doc](https://docs.python.org/3/library/pdb.html) is helpful to have open to look up commands
 
 
@@ -30,8 +28,8 @@ In this part of the tutorial, you will debug an error in an Airflow pipeline usi
 
 
 
-* This is a very simple and contrived pipeline that fetches data from a url and writes a CSV locally. 
-* Then the CSV file is parsed and when the Description column is “ACADEMIC FOUNDATION”, the “Leave” column is incremented by one. And the entire row is written to a new CSV file. 
+* This is a very simple and contrived pipeline that fetches data from a url and writes a CSV locally employees.csv 
+* Then the CSV file is parsed and when the Description column is “ACADEMIC FOUNDATION”, the “Leave” column is incremented by one. And the entire row is written to a new CSV file employess_filered.csv 
 
 
 ### Tutorial
@@ -115,8 +113,8 @@ You can see if we had more lines to review before encountering this error this p
 
 1. Switch `transform_leave_column()` with try-except
     1. Uncomment lines 79-83
-    2. Comment lines 77-78
-    3. Comment line 31
+    2. Comment line 31
+    3. Comment lines 77-78
     4. Run test
     5. Type `pp row `to print its value
 
@@ -132,8 +130,14 @@ Now we know that the “Leave” column may contain a string and the code needs 
 3. Run test 
 4. Type `c` to continue and there will be no error.
 5. View data files again
-    1. `more ~/airflow/files/employees_bad.csv`
-    2. `more ~/airflow/files/employees_filtered.csv`
+    1. `more ~/airflow/files/employees_filtered.csv`
+    2. Only 3 lines now
+6. Replace breakpoint with write to bad file
+    3. Uncomment line 85
+    4. Comment line 83
+    5. Run test
+    6. `more ~/airflow/files/employees_bad.csv`
+        1. See the one bad row
 
 
 #### Commands Covered
